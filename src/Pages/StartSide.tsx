@@ -1,9 +1,7 @@
-// import { TiClipboard } from "react-icons/ti";
-{/* <TiClipboard /> */}
-
+import { PalletCard } from "../components/PalletCard/PalletCard";
+import Style from "./StratSide.module.scss";
 
 export const StartSide = () => {
-
 
     function saveToLocaleStorage() {
         // Gem variabelen 'minVariabel' i local storage
@@ -21,7 +19,13 @@ export const StartSide = () => {
 
     return(
         <>
-        <h1>Her er Startside</h1>
+        
+             <header className={Style.Headline}>
+                <h1>Your new colors</h1>
+            </header>
+        
+        
+        <PalletCard/>
         </>
     )
 }
