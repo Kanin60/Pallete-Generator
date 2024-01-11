@@ -1,5 +1,5 @@
 
-import { fetchColors } from "../Helpers";
+import ColorChangeButton from "../components/Button/Button";
 
 export const StartSide = () => {
 
@@ -31,14 +31,11 @@ export const StartSide = () => {
     saveToLocalStorage(arrayFromAPI);
     GetFromLocalStorage()
     
-  fetchColors((colors) => {
-    console.log(colors);
-    
-}) 
+
     return (
         <>
         <h1>Her er Startside</h1>
-        
+        <ColorChangeButton initialColor="#3498db"/>
         </>
     )
 }

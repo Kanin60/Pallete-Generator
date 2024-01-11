@@ -1,7 +1,7 @@
 
 
 //// fetch data fra api
-export function fetchColors(callback: (colors: number[][]) => void): void {
+export function fetchPalette(callback: (colors: number[][]) => void): void {
   //definerer Colormind api endpoint
     var url = "http://colormind.io/api/";
     //definerer dataen der bliver sendt i api-request
@@ -20,9 +20,9 @@ export function fetchColors(callback: (colors: number[][]) => void): void {
         //parser json response fra api
         var response = JSON.parse(http.responseText);
         //udtrækker color palette fra response
-        var palette = response.result
-        callback(palette);
-        console.log(palette);
+        var paletteArray = response.result
+        callback(paletteArray);
+        console.log(paletteArray);
         } else {
         console.error('error fetching colors', http.statusText);
     }
@@ -36,16 +36,11 @@ export function fetchColors(callback: (colors: number[][]) => void): void {
 
 
 
-
-
-
-
-
 /**** RGB -> HEX  ****/
 
-export function rbgToHex(r: number, g: number, b: number): string {
+export function rgbToHex(r: number, g: number, b: number): string {
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
     
 }
-console.log(rbgToHex(255, 255, 255));
+console.log(rgbToHex(255, 255, 255));
 
