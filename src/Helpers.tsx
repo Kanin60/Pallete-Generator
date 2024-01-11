@@ -41,15 +41,11 @@ export function fetchColors(callback: (colors: number[][]) => void): void {
 
 
 
-/**** RGB -> HEX testing ****/
+/**** RGB -> HEX  ****/
 
-// const componentToHex = (c) => {
-//     const hex = c.toString(16);
-//     return hex.length == 1 ? "0" + hex : hex;
-//   }
+export function rbgToHex(r: number, g: number, b: number): string {
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+    
+}
+console.log(rbgToHex(255, 255, 255));
 
-//   const rgbToHex = (r, g, b) => {
-//     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-//   }
-
-//   console.log(rgbToHex(255, 51, 255));
