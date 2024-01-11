@@ -1,3 +1,8 @@
+
+
+
+
+
 export const MyPallettePage = () => {
 
     return(
