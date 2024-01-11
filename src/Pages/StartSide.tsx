@@ -3,29 +3,40 @@ import Style from "./StratSide.module.scss";
 
 export const StartSide = () => {
 
-    function saveToLocaleStorage() {
-        // Gem variabelen 'minVariabel' i local storage
-        const minVariabel = 'Dette er værdien, jeg vil gemme';
-        localStorage.setItem('minVariabel', minVariabel);
-    
-        // Hent variablen fra local storage
-        const gemtVariabel = localStorage.getItem('minVariabel');
-    
-        console.log(gemtVariabel); // Udskriver 'Dette er værdien, jeg vil gemme'
-    
+    //Interface til arrayFromAPI, som sætter typen af data fra API'et
+    interface arrayFromAPIProps {
+        result: number[][];
     }
-    saveToLocaleStorage()
 
+    //Dummy data - data fra API'et skal gemmes i denne variabel
+    const arrayFromAPI: arrayFromAPIProps[] = [
+        { result: [[214, 78, 69], [247, 242, 163], [201, 216, 147], [57, 141, 112], [62, 80, 64]] }
+    ];
 
-    return(
+    //Gemmer dataen fra arrayFromAPI i local storage
+    function saveToLocalStorage(tal: arrayFromAPIProps[]) {
+        // Gemmer variabelen i local storage
+        const hexPalletteArray = JSON.stringify(tal);
+        localStorage.setItem('hexPalletteArray', hexPalletteArray);
+        console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
+    }
+    //henter dataen fra local storage og gemmer det i savedPalletteArray
+    function GetFromLocalStorage() {
+        // Henter variablen fra local storage
+        const savedPalletteArray = JSON.parse(localStorage.getItem('hexPalletteArray') || 'null');
+        console.log('* savedPalletteArray henter data fra local storage: ', savedPalletteArray);
+    }
+
+    // Kalder funktionerne
+    saveToLocalStorage(arrayFromAPI);
+    GetFromLocalStorage()
+
+    return (
         <>
-        
-             <header className={Style.Headline}>
+            <header className={Style.Headline}>
                 <h1>Your new colors</h1>
             </header>
-        
-        
-        <PalletCard/>
+            <PalletCard />
         </>
-    )
-}
+    );
+};
