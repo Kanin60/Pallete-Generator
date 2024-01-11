@@ -1,3 +1,5 @@
+import { fetchColors } from "../Helpers";
+
 export const StartSide = () => {
 
 
@@ -18,6 +20,14 @@ export const StartSide = () => {
     return(
         <>
         <h1>Her er Startside</h1>
+        
         </>
     )
 }
+
+fetchColors((colors) => {
+    console.log(colors);
+    
+}) 
+
+
