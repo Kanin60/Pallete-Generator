@@ -1,6 +1,9 @@
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StratSide.module.scss";
 
+import { fetchColors } from "../Helpers";
+import { Seperator } from "../components/Seperator/Seperator";
+
 export const StartSide = () => {
 
     //Interface til arrayFromAPI, som sætter typen af data fra API'et
@@ -29,7 +32,13 @@ export const StartSide = () => {
 
     // Kalder funktionerne
     saveToLocalStorage(arrayFromAPI);
-    GetFromLocalStorage()
+    GetFromLocalStorage() 
+  
+    fetchColors((colors) => {
+        console.log(colors);
+      }
+    ) 
+
 
     return (
         <>
@@ -38,5 +47,5 @@ export const StartSide = () => {
             </header>
             <PalletCard />
         </>
-    );
-};
+    )
+}
