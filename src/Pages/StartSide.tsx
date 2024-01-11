@@ -1,3 +1,7 @@
+// import { TiClipboard } from "react-icons/ti";
+{/* <TiClipboard /> */}
+
+
 export const StartSide = () => {
 
 
