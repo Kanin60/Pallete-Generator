@@ -1,4 +1,6 @@
 
+import { fetchColors } from "../Helpers";
+
 export const StartSide = () => {
 
     //Interface til arrayFromAPI, som sætter typen af data fra API'et
@@ -29,9 +31,14 @@ export const StartSide = () => {
     saveToLocalStorage(arrayFromAPI);
     GetFromLocalStorage()
     
+  fetchColors((colors) => {
+    console.log(colors);
+    
+}) 
     return (
         <>
-            <h1>Her er Startside</h1>
+        <h1>Her er Startside</h1>
+        
         </>
-    );
-};
+    )
+}
