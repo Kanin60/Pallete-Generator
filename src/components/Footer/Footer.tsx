@@ -1,10 +1,12 @@
-
+import Style from './footer.module.scss';
 
 export const Footer = () => {
-
-    return(
+    return (
         <>
-            <h5>Her er Footer</h5>
+            <footer className={Style.footer}>
+                <h4>Colorizer Palette Generator - Created by Mike Montgomery</h4>
+                <p>Made possible by colormind.io palette API</p>
+            </footer>
         </>
-    )
+    );
 }
