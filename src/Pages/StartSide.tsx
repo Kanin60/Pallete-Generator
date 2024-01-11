@@ -1,5 +1,6 @@
 
 import { fetchColors } from "../Helpers";
+import { Seperator } from "../components/Seperator/Seperator";
 
 export const StartSide = () => {
 
@@ -31,13 +32,14 @@ export const StartSide = () => {
     saveToLocalStorage(arrayFromAPI);
     GetFromLocalStorage()
     
-  fetchColors((colors) => {
-    console.log(colors);
-    
-}) 
+    fetchColors((colors) => {
+        console.log(colors);
+    }
+    ) 
     return (
         <>
         <h1>Her er Startside</h1>
+        <Seperator />
         
         </>
     )
