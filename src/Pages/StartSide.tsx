@@ -43,8 +43,6 @@ export const StartSide = () => {
 
     return (
         <>
-        <Button text='random palette' actionType="randomPalette"/>
-        <Button text='my palettes' actionType="myPalettes"/>
             <header className={Style.Headline}>
                 <h1>Your new colors</h1>
             </header>
