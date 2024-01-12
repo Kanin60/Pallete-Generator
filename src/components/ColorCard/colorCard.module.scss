@@ -1,4 +1,45 @@
-.divContainer{
-    font-family: var(--fontFamily );
+@import url(../../GlobalStyle.module.scss);
+
+
+.divCard {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    font-family: var(--fontFamily);
     color: var(--textColor);
+
+    .ButtonStyle {
+        text-align: center;
+    }
+}
+
+p {
+    text-align: center;
+    color: var(--textColor);
+
+
+}
+
+
+.buttonCantainer {
+    width: 150px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+button {
+    border: none;
+    color: var(--textColor);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background: transparent; // eto znachit sdelat prazrachniy 
+}
+
+svg {
+    color: white;
+    font-size: 20px;
 }

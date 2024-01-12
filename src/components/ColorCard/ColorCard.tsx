@@ -1,17 +1,32 @@
-// import Style from "./colorCard.module.scss";
-// import { TiClipboard } from "react-icons/ti";
-{/* <TiClipboard /> */ }
+import { useState } from "react";
+import Style from "./colorCard.module.scss";
+import { TiClipboard } from "react-icons/ti";
 
-// export function colorCard() {
-//     const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00']
-//     return (
-//         <>
-//             <h1>Your new colors</h1>
-//             <div className={Style.divContainer}>
-                
-//             </div>
+export function ColorCard() {
+    const [colorHex] = useState<string>("#FF0000")
 
-//         </>
-//     )
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(colorHex);
+        alert(`Copied the color`);
+    };
 
+    return (
+        <>
+            <div className={Style.divCard} style={{ backgroundColor: colorHex }}>
+
+            </div>
+            <div className={Style.buttonCantainer}>
+
+                <p>
+                    {colorHex}
+                </p>
+                <button onClick={copyToClipboard}>
+                    copy 
+                <TiClipboard />
+                </button>
+
+            </div>
+
+        </>
+    );
 }

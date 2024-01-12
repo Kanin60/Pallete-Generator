@@ -1,5 +1,6 @@
 
 import { fetchColors } from "../Helpers";
+import { ColorCard } from "../components/ColorCard/ColorCard";
 import { Seperator } from "../components/Seperator/Seperator";
 
 export const StartSide = () => {
@@ -40,6 +41,7 @@ export const StartSide = () => {
         <>
         <h1>Her er Startside</h1>
         <Seperator />
+        <ColorCard/>
         
         </>
     )
