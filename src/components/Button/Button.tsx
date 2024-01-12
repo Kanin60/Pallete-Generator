@@ -1,27 +1,41 @@
-import { useState } from "react"
-import { fetchPalette, rgbToHex } from "../../Helpers"
-
+import styles from './button.module.scss'
 interface ButtonProps {
-    initialColor: string
+    text: string;
+    actionType: '1' | '2' | '3' | '4';
 }
 
-const ColorChangeButton = ({initialColor}: ButtonProps) => {
-
-    const [color, setColor] = useState<string>(initialColor)
-
+function Button({text,actionType}:ButtonProps) {
     const handleClick = () => {
-        fetchPalette((paletteArray) => {
-            const randomIndex = Math.floor(Math.random() * paletteArray.length)
-            const randomColorRgb = paletteArray[randomIndex]
-            const newColorHex = rgbToHex(...randomColorRgb as [number, number, number])
-            setColor(newColorHex)
-        })
+        switch (actionType) {
+            case '1':
+                console.log('generate clicked');
+                break;
+                
+                case '2':
+                console.log('save this clicked');
+                break;
+
+                case '3':
+                console.log('my palettes clicked');
+                break;
+
+                case '4':
+                console.log('random palette clicked');
+                break;
+                default:
+                    console.log('default');
+                    
+        }
     }
-    
+
     return (
-    <button style={{ backgroundColor: color, color: 'white', padding: '10px 20px', cursor: 'pointer'}} onClick={handleClick}>
-        change color
-    </button>
+        <button className={styles.button} onClick={handleClick}>
+            {text}
+        </button>
     )
 }
-export default ColorChangeButton
+    
+   
+
+
+export default Button

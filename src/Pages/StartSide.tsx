@@ -1,5 +1,5 @@
-
-import ColorChangeButton from "../components/Button/Button";
+import Button from "../components/Button/Button";
+//import ColorChangeButton from "../components/Button/Button";
 
 export const StartSide = () => {
 
@@ -30,12 +30,16 @@ export const StartSide = () => {
     // Kalder funktionerne
     saveToLocalStorage(arrayFromAPI);
     GetFromLocalStorage()
-    
-
+ 
     return (
         <>
         <h1>Her er Startside</h1>
-        <ColorChangeButton initialColor="#3498db"/>
+        {/* <ColorChangeButton initialColor="#3498db"/> */}
+        <Button text='first' actionType="1"/>
+        <Button text='second' actionType="2"/>
+        <Button text='third' actionType="3"/>
+        <Button text='fourth' actionType="4"/>
+
         </>
     )
 }
