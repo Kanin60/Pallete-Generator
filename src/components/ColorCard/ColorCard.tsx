@@ -4,7 +4,6 @@ import { TiClipboard } from "react-icons/ti";
 
 export function ColorCard() {
     const [colorHex] = useState<string>("#FF0000")
-
     const copyToClipboard = () => {
         navigator.clipboard.writeText(colorHex);
         alert(`Copied the color`);
@@ -13,10 +12,8 @@ export function ColorCard() {
     return (
         <>
             <div className={Style.divCard} style={{ backgroundColor: colorHex }}>
-
             </div>
             <div className={Style.buttonCantainer}>
-
                 <p>
                     {colorHex}
                 </p>
@@ -24,9 +21,7 @@ export function ColorCard() {
                     copy 
                 <TiClipboard />
                 </button>
-
             </div>
-
         </>
     );
 }
