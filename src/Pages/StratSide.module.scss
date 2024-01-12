@@ -1,0 +1,15 @@
+.headline {
+    margin: auto;
+
+    h1 {
+        text-align: center;
+        font-family: var(--fontFamily);
+        font-weight: 500;
+        font-size: 3em;
+        justify-content: space-between;
+        background: linear-gradient(40.80deg, #CF9407 26.79%, #BDBF63 49.8%, #601E3E 57.20%);
+        -webkit-background-clip: text;
+        color: transparent;
+
+    }
+}
