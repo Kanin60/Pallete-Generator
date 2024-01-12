@@ -1,41 +1,80 @@
-import styles from './button.module.scss'
+import styles from "./button.module.scss";
 interface ButtonProps {
-    text: string;
-    actionType: '1' | '2' | '3' | '4';
+  text: string;
+  actionType:
+    | "generate"
+    | "save"
+    | "randomPalette"
+    | "myPalettes"
+    | "setActive"
+    | "delete";
+}
+/* import { useState } from "react"
+import { fetchPalette, rgbToHex } from "../../Helpers"
+
+interface ButtonProps {
+    initialColor: string
 }
 
-function Button({text,actionType}:ButtonProps) {
+const ColorChangeButton = ({initialColor}: ButtonProps) => {
+
+    const [color, setColor] = useState<string>(initialColor)
+
     const handleClick = () => {
-        switch (actionType) {
-            case '1':
-                console.log('generate clicked');
-                break;
-                
-                case '2':
-                console.log('save this clicked');
-                break;
-
-                case '3':
-                console.log('my palettes clicked');
-                break;
-
-                case '4':
-                console.log('random palette clicked');
-                break;
-                default:
-                    console.log('default');
-                    
-        }
+        fetchPalette((paletteArray) => {
+            const randomIndex = Math.floor(Math.random() * paletteArray.length)
+            const randomColorRgb = paletteArray[randomIndex]
+            const newColorHex = rgbToHex(...randomColorRgb as [number, number, number])
+            setColor(newColorHex)
+        })
     }
-
+    
     return (
-        <button className={styles.button} onClick={handleClick}>
-            {text}
-        </button>
+    <button style={{ backgroundColor: color, color: 'white', padding: '10px 20px', cursor: 'pointer'}} onClick={handleClick}>
+        change color
+    </button>
     )
 }
-    
-   
+export default ColorChangeButton
+*/
 
+function Button({ text, actionType }: ButtonProps) {
+  const handleClick = () => {
+    switch (actionType) {
+      case "generate":
+        console.log("generate clicked");
+        break;
 
-export default Button
+      case "save":
+        console.log("save this clicked");
+        break;
+
+      case "randomPalette":
+        console.log("my palettes clicked");
+        break;
+
+      case "myPalettes":
+        console.log("random palette clicked");
+        break;
+
+      case "setActive":
+        console.log("set active clicked");
+        break;
+
+      case "delete":
+        console.log("delete clicked");
+        break;
+        
+      default:
+        console.log("default");
+    }
+  };
+
+  return (
+    <button className={styles.button} onClick={handleClick}>
+      {text}
+    </button>
+  );
+}
+
+export default Button;

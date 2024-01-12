@@ -36,16 +36,9 @@ export const StartSide = () => {
 
     GetFromLocalStorage()
  
-    return (
-        <>
-        <h1>Her er Startside</h1>
+   
         {/* <ColorChangeButton initialColor="#3498db"/> */}
-        <Button text='first' actionType="1"/>
-        <Button text='second' actionType="2"/>
-        <Button text='third' actionType="3"/>
-        <Button text='fourth' actionType="4"/>
 
-    GetFromLocalStorage()  
 
 
     return (
@@ -54,6 +47,8 @@ export const StartSide = () => {
                 <h1>Your new colors</h1>
             </header>
             <PalletCard />
+            <Button text='generate' actionType="generate"/>
+        <Button text='save this' actionType="save"/>
         </>
     )
 }
