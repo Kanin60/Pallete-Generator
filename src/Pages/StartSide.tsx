@@ -1,8 +1,9 @@
-import { getFromLocalStorage } from "../Helpers";
+import { getFromLocalStorage } from "../Helpers"
+import { fetchColors } from "../Helpers";
+import { ColorCard } from "../components/ColorCard/ColorCard";
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StratSide.module.scss";
-
 import { Seperator } from "../components/Seperator/Seperator";
 
 export const StartSide = () => {
@@ -32,10 +33,7 @@ export const StartSide = () => {
  
    
         {/* <ColorChangeButton initialColor="#3498db"/> */}
-
-
-
-    return (
+return(
         <>
             <header className={Style.Headline}>
                 <h1>Your new colors</h1>
@@ -44,5 +42,6 @@ export const StartSide = () => {
             <Button text='generate' actionType="generate"/>
         <Button text='save this' actionType="save"/>
         </>
-    )
+
+        )
 }

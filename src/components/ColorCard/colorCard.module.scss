@@ -1,50 +1,39 @@
-header {
+@import url(../../GlobalStyle.module.scss);
+.divCard {
+    width: 150px;
+    height: 150px;
     margin: auto;
-
-    h1 {
-        text-align: center;
-        font-family: var(--fontFamily);
-        font-weight: 500;
-        font-size: 3em;
-        justify-content: space-between;
-        background: linear-gradient(40.80deg, #CF9407 26.79%, #BDBF63 49.8%, #601E3E 57.20%);
-        -webkit-background-clip: text;
-        color: transparent;
-
-    }
-}
-
-.divContainer {
-    margin: auto;
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // gap: 10px;
     font-family: var(--fontFamily);
     color: var(--textColor);
-    height: 150px;
-    width: 150px;
+
+    .ButtonStyle {
+        text-align: center;
+    }
 }
 
-
-.buttonCantainer {
-    margin: auto;
+p {
     text-align: center;
-    width: 100%;
-
-
-    button {
-        background-color: transparent;
-        border: none;
-        color: var(--textColor);
-
-
-    }
-
-    svg {
-        color: red;
-        width: 28px;
-        height: 28px;
-        margin-top: 3px;
-        margin-left: 2px;
-    }
+    color: var(--textColor);
 }
+.buttonCantainer {
+    width: 150px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+button {
+    border: none;
+    color: var(--textColor);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background: transparent; // eto znachit sdelat prazrachniy 
+}
+
+svg {
+    color: white;
+    font-size: 20px;
+    }
