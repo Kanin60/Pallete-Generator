@@ -37,7 +37,7 @@ export const StartSide = () => {
     GetFromLocalStorage()
  
    
-        {/* <ColorChangeButton initialColor="#3498db"/> */}
+     
 
 
 
