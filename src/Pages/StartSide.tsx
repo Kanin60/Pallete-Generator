@@ -1,3 +1,4 @@
+import { getFromLocalStorage } from "../Helpers"
 import { fetchColors } from "../Helpers";
 import { ColorCard } from "../components/ColorCard/ColorCard";
 import Button from "../components/Button/Button";
@@ -24,17 +25,11 @@ export const StartSide = () => {
         localStorage.setItem('hexPalletteArray', hexPalletteArray);
         console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
     }
-    //henter dataen fra local storage og gemmer det i savedPalletteArray
-    function GetFromLocalStorage() {
-        // Henter variablen fra local storage
-        const savedPalletteArray = JSON.parse(localStorage.getItem('hexPalletteArray') || 'null');
-        console.log('* savedPalletteArray henter data fra local storage: ', savedPalletteArray);
-    }
+    
 
-    // Kalder funktionerne
+    // Kalder funktionen som gemmer data arrayFromAPI i local storage
     saveToLocalStorage(arrayFromAPI);
-
-    GetFromLocalStorage()
+   
  
    
         {/* <ColorChangeButton initialColor="#3498db"/> */}
