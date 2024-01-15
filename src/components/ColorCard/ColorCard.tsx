@@ -10,7 +10,7 @@ export function ColorCard() {
     };
 
     return (
-        <>
+        <div>
             <div className={Style.divCard} style={{ backgroundColor: colorHex }}>
             </div>
             <div className={Style.buttonCantainer}>
@@ -22,6 +22,6 @@ export function ColorCard() {
                 <TiClipboard />
                 </button>
             </div>
-        </>
+        </div>
     );
 }

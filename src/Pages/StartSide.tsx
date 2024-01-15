@@ -38,15 +38,15 @@ export const StartSide = () => {
  
    
         {/* <ColorChangeButton initialColor="#3498db"/> */}
-
+return(
         <>
             <header className={Style.Headline}>
                 <h1>Your new colors</h1>
             </header>
-           <ColorCard/>
             <PalletCard />
             <Button text='generate' actionType="generate"/>
         <Button text='save this' actionType="save"/>
         </>
-    )
+
+        )
 }
