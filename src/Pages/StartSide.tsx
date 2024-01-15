@@ -30,9 +30,7 @@ export const StartSide = () => {
     // Kalder funktionen som gemmer data arrayFromAPI i local storage
     saveToLocalStorage(arrayFromAPI);
    
- 
-   
-        {/* <ColorChangeButton initialColor="#3498db"/> */}
+
 return(
         <>
             <header className={Style.Headline}>
