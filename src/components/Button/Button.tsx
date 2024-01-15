@@ -1,4 +1,5 @@
 import styles from "./button.module.scss";
+import { getFromLocalStorage } from '../../Helpers'
 interface ButtonProps {
   text: string;
   actionType:
@@ -20,6 +21,8 @@ function Button({ text, actionType }: ButtonProps) {
 
       case "save":
         console.log("save this clicked");
+          // Kalder funktionen som henter data fra local storage
+          getFromLocalStorage()
         break;
 
       case "randomPalette":

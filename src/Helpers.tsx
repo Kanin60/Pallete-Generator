@@ -36,6 +36,7 @@ export function rgbToHex(r: number, g: number, b: number): string {
 
 
 
+
 /* her henter du 5 hex farver
 fetchPalette().then(paletteArray => {
     console.log('palette: ' + paletteArray);
@@ -43,3 +44,16 @@ fetchPalette().then(paletteArray => {
     console.error(error)
 })
 */
+        
+/**** HENTER DATA FRA LOCAL STORAGE****/
+//henter dataen fra local storage og gemmer det i savedPalletteArray
+export function getFromLocalStorage() {
+  // Henter variablen fra local storage
+  const savedPalletteArray = JSON.parse(localStorage.getItem('hexPalletteArray') || 'null');
+  console.log('* savedPalletteArray henter data fra local storage: ', savedPalletteArray[0]);
+}
+
+//Funktion til gradient-styling på elementer
+export function gradient(colorCode:number) {
+  colorCode//IKKE FÆRDIG
+}

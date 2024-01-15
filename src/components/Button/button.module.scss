@@ -1,7 +1,9 @@
 button {
     color: #fff;
     background-color: #212121;
-    border: solid blue 1px; //sæt faveskift funktion -variabel ind (linear gradients)
+    border-image: linear-gradient(to right, rgb(224, 15, 16), rgb(23, 55, 147));
+    border-image-slice: 1;
+    
     width: 144px;
     height: 36px;
     font-size: 16px;

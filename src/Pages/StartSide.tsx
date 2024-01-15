@@ -1,8 +1,9 @@
-
+import { getFromLocalStorage } from "../Helpers"
+import { fetchColors } from "../Helpers";
+import { ColorCard } from "../components/ColorCard/ColorCard";
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StratSide.module.scss";
-
 import { Seperator } from "../components/Seperator/Seperator";
 
 export const StartSide = () => {
@@ -24,24 +25,13 @@ export const StartSide = () => {
         localStorage.setItem('hexPalletteArray', hexPalletteArray);
         console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
     }
-    //henter dataen fra local storage og gemmer det i savedPalletteArray
-    function GetFromLocalStorage() {
-        // Henter variablen fra local storage
-        const savedPalletteArray = JSON.parse(localStorage.getItem('hexPalletteArray') || 'null');
-        console.log('* savedPalletteArray henter data fra local storage: ', savedPalletteArray);
-    }
+    
 
-    // Kalder funktionerne
+    // Kalder funktionen som gemmer data arrayFromAPI i local storage
     saveToLocalStorage(arrayFromAPI);
-
-    GetFromLocalStorage()
- 
    
-     
 
-
-
-    return (
+return(
         <>
             <header className={Style.Headline}>
                 <h1>Your new colors</h1>
@@ -50,5 +40,6 @@ export const StartSide = () => {
             <Button text='generate' actionType="generate"/>
         <Button text='save this' actionType="save"/>
         </>
-    )
+
+        )
 }
