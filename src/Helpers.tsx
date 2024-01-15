@@ -37,10 +37,10 @@ export function fetchPalette(callback: (colors: number[][]) => void): void {
 
 
 /**** RGB -> HEX  ****/
-
 export function rgbToHex(r: number, g: number, b: number): string {
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
     
 }
-console.log(rgbToHex(255, 255, 255));
+console.log(rgbToHex(200, 255, 255));
+
 

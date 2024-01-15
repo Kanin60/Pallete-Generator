@@ -1,3 +1,4 @@
+import { fetchPalette, rgbToHex } from "../../Helpers";
 import styles from "./button.module.scss";
 interface ButtonProps {
   text: string;
@@ -8,6 +9,7 @@ interface ButtonProps {
     | "myPalettes"
     | "setActive"
     | "delete";
+    
 }
 /* import { useState } from "react"
 import { fetchPalette, rgbToHex } from "../../Helpers"
@@ -42,7 +44,14 @@ function Button({ text, actionType }: ButtonProps) {
   const handleClick = () => {
     switch (actionType) {
       case "generate":
-        console.log("generate clicked");
+        fetchPalette((paletteArray) => {
+            const hexPalette = paletteArray.map((color) => {
+                const rgbColor = color as [number, number, number]
+                return rgbToHex(...rgbColor)
+            })
+            console.log("generate clicked", hexPalette);
+        })
+        
         break;
 
       case "save":
@@ -50,11 +59,11 @@ function Button({ text, actionType }: ButtonProps) {
         break;
 
       case "randomPalette":
-        console.log("my palettes clicked");
+        console.log("random palettes clicked");
         break;
 
       case "myPalettes":
-        console.log("random palette clicked");
+        console.log("my palette clicked");
         break;
 
       case "setActive":
