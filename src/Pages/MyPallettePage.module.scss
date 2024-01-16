@@ -1,0 +1,10 @@
+@import url(../GlobalStyle.module.scss);
+
+.buttonStyle {
+    justify-content: end;
+    margin:4rem;
+    margin-top: 10rem;
+    grid-column: 1;
+    display: grid;
+    gap: 10px;
+}
