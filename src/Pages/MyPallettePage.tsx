@@ -2,9 +2,6 @@ import Button from "../components/Button/Button"
 import { PalletCard } from "../components/PalletCard/PalletCard"
 
 
-
-
-
 export const MyPallettePage = () => {
 
     return(

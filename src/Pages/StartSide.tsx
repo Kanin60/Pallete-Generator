@@ -1,44 +1,64 @@
-import { getFromLocalStorage } from "../Helpers"
-import { fetchColors } from "../Helpers";
-import { ColorCard } from "../components/ColorCard/ColorCard";
+import { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StratSide.module.scss";
-import { Seperator } from "../components/Seperator/Seperator";
+import {saveToLocalStorage} from '../Helpers'
 
 export const StartSide = () => {
 
-    //Interface til arrayFromAPI, som sætter typen af data fra API'et
-    interface arrayFromAPIProps {
-        result: number[][];
-    }
+    const [colorArray, setColorArray] = useState<any>([])
+    const [hexArray, setHexArray] = useState([])
 
-    //Dummy data - data fra API'et skal gemmes i denne variabel
-    const arrayFromAPI: arrayFromAPIProps[] = [
-        { result: [[214, 78, 69], [247, 242, 163], [201, 216, 147], [57, 141, 112], [62, 80, 64]] }
-    ];
+    
+    const getNewColors = () => {
+    let url = "http://colormind.io/api/";
+    let options = {
+        method: "POST",
+        body: JSON.stringify({ model: "default" }),
+    };
+    fetch(url, options)
+        .then((res) => res.json())
+        .then((colors) => setColorArray(colors))
+        .catch((error) => console.error(error));
+    };
 
-    //Gemmer dataen fra arrayFromAPI i local storage
-    function saveToLocalStorage(tal: arrayFromAPIProps[]) {
-        // Gemmer variabelen i local storage
-        const hexPalletteArray = JSON.stringify(tal);
-        localStorage.setItem('hexPalletteArray', hexPalletteArray);
-        console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
+    useEffect(()=>{
+        getNewColors()
+    },[])
+
+    useEffect(()=>{
+        let hex= colorArray.result?.map((item:any) => {
+            return(
+                rgbToHex(item[0], item[1], item[2])
+            )
+        })
+        setHexArray(hex)
+    },[colorArray])
+
+
+    console.log('HER:', colorArray);
+    console.log('HEX COLORS:', hexArray);
+
+    function handleSave() {
+        saveToLocalStorage(hexArray)
     }
     
-
-    // Kalder funktionen som gemmer data arrayFromAPI i local storage
-    saveToLocalStorage(arrayFromAPI);
-   
+  /**** RGB -> HEX  ****/
+    function rgbToHex(r: number, g: number, b: number): string {
+        const toHex = (color: number) => color.toString(16).padStart(2, '0')
+        return '#' + toHex(r) + toHex(g) + toHex(b)
+    }
 
 return(
         <>
             <header className={Style.Headline}>
                 <h1>Your new colors</h1>
             </header>
-            <PalletCard />
-            <Button text='generate' actionType="generate"/>
-        <Button text='save this' actionType="save"/>
+            <PalletCard hexProps={hexArray} />
+            <div className={Style.startButtonContainer}>
+                <Button text='Generate' actionType="generate" action={getNewColors}/>
+                <Button text='Save This' actionType="save" action={handleSave} />
+            </div>
         </>
 
         )

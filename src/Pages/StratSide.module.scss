@@ -10,6 +10,13 @@
         background: linear-gradient(40.80deg, #CF9407 26.79%, #BDBF63 49.8%, #601E3E 57.20%);
         -webkit-background-clip: text;
         color: transparent;
-
     }
+}
+.startButtonContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 40px;
 }
