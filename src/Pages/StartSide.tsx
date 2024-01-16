@@ -36,8 +36,8 @@ export const StartSide = () => {
     },[colorArray])
 
 
-    console.log('HER:', colorArray);
-    console.log('HEX COLORS:', hexArray);
+    // console.log('HER:', colorArray);
+    // console.log('HEX COLORS:', hexArray);
 
     function handleSave() {
         saveToLocalStorage(hexArray)
