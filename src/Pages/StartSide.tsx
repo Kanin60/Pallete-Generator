@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
-import Style from "./StratSide.module.scss";
+import Style from "./StartSide.module.scss";
 import {saveToLocalStorage} from '../Helpers'
 
 export const StartSide = () => {
@@ -33,10 +33,10 @@ export const StartSide = () => {
             )
         })
         setHexArray(hex)
-    },[colorArray])
+    },[colorArray])    
 
 
-    console.log('HER:', colorArray);
+    console.log('COLORARRAY: ', colorArray);
     console.log('HEX COLORS:', hexArray);
 
     function handleSave() {
@@ -48,6 +48,19 @@ export const StartSide = () => {
         const toHex = (color: number) => color.toString(16).padStart(2, '0')
         return '#' + toHex(r) + toHex(g) + toHex(b)
     }
+
+
+    /**** change elements (gradients) ****/
+    const generateGradient = (colors: string[], direction: string = 'to right') => {
+        return `linear-gradient(${direction}, ${colors.join(', ')})`
+    }
+    useEffect(() => {
+        if (hexArray?.length > 0) {
+            const gradient = generateGradient(hexArray)
+            document.documentElement.style.setProperty('--newGradient', gradient)
+        }
+    }, [hexArray])
+
 
 return(
         <>
