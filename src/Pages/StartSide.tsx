@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
-import Style from "./StratSide.module.scss";
+import Style from "./StartSide.module.scss";
 import {saveToLocalStorage} from '../Helpers'
 
 export const StartSide = () => {
