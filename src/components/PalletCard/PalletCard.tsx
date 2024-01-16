@@ -14,7 +14,7 @@ export const PalletCard =({hexProps} : hexPropsInterface)=>{
             {
                 hexProps &&
                 hexProps?.map((item : string, index : number) =>{
-                    console.log(item);
+                    // console.log(item);
                     
                     return(
                         <ColorCard key={index} hexColor={item}/>

@@ -35,9 +35,9 @@ export const StartSide = () => {
         setHexArray(hex)
     },[colorArray])    
 
-
     console.log('COLORARRAY: ', colorArray);
     console.log('HEX COLORS:', hexArray);
+
 
     function handleSave() {
         saveToLocalStorage(hexArray)
@@ -65,7 +65,7 @@ export const StartSide = () => {
 return(
         <>
             <header className={Style.Headline}>
-                <h1>Your new colors</h1>
+                <h1> <b>Your new colors</b></h1>
             </header>
             <PalletCard hexProps={hexArray} />
             <div className={Style.startButtonContainer}>
