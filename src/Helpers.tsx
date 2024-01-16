@@ -14,10 +14,23 @@ export function gradient(colorCode:number) {
 
 
 
-    //Gemmer dataen fra arrayFromAPI i local storage
-    export function saveToLocalStorage(tal: string[]) {
-      // Gemmer variabelen i local storage
-      const hexPalletteArray = JSON.stringify(tal);
-      localStorage.setItem('hexPalletteArray', hexPalletteArray);
-      console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
+//Gemmer dataen fra arrayFromAPI i local storage
+export function saveToLocalStorage(hexArray: string[][]) {
+  /*
+  findes der noget i LS (if)
+  hvis der findes noget i ls
+  hent LS i variable
+  push tilføj til variable
+  gem igen i LS
+  */
+  if(localStorage.getItem('hexPalletteArray')){
+    let savedArrays = JSON.parse(localStorage.getItem('hexPalletteArray')!)
+    savedArrays?.push(hexArray)
+    localStorage.setItem('hexPalletteArray', JSON.stringify(savedArrays))
+  } else{
+    localStorage.setItem('hexPalletteArray', JSON.stringify([hexArray]))
+    // console.log('Set to LS');
   }
+}
+
+  
