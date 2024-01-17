@@ -7,4 +7,20 @@
     grid-column: 1;
     display: grid;
     gap: 10px;
+
+
+}    
+
+ button {
+    border-image: var(--myPaletteGradient) 1 stretch;
+  }
+  
+  .myPallettePage .headline {
+    background-image: var(--myPaletteGradient);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .myPallettePage button {
+    border-image: var(--myPaletteGradient) 1 stretch;
 }

@@ -6,7 +6,7 @@ export const Seperator = styled.hr`
     /* border-image: linear-gradient(to right, rgb(224, 15, 16), rgb(23, 55, 147));
     border-image-slice: 1; */
 
-    border-image: var(--newGradient) 1 stretch;
+    border-image: var(--randomPaletteGradient) 1 stretch;
     display: block;
     width: 100%;
     margin: 20px 0;
