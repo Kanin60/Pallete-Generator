@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Button from "../components/Button/Button"
 import { PalletCard } from "../components/PalletCard/PalletCard"
 import Style from "./MyPallettePage.module.scss";
+import { Seperator } from "../components/Seperator/Seperator";
 
 
 /* 
@@ -14,40 +15,47 @@ Ellers
 Vis intet på siden
 */
 export const MyPallettePage = () => {
-    
+
     const [arrayPallette, setArrayPallette] = useState([])
-    
+
     function handleArrayPallette() {
-        if(localStorage.getItem('hexPalletteArray')){
+        if (localStorage.getItem('hexPalletteArray')) {
             let data = JSON.parse(localStorage.getItem('hexPalletteArray')!)
             setArrayPallette(data)
-        }else{
+        } else {
             setArrayPallette([])
+        }
     }
-    } 
 
-    useEffect(()=>{
+    useEffect(() => {
         handleArrayPallette()
-    },[])
-    
+    }, [])
+
     console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
 
-    return(
+    return (
         <>
             {
-                arrayPallette && arrayPallette.map((item : string[], index : number)=>{
-                    return(
-                    <>
-                        <PalletCard key={index} hexProps={item}/>
-                        <div className={Style.buttonStyle}>
-                            <Button text='Set active' actionType="setActive"/>
-                            <Button text='Delete' actionType="delete"/>
-                        </div>
-                    </>
+                arrayPallette && arrayPallette.map((item: string[], index: number) => {
+                    return (
+                        <>
+                            <div className={Style.PalletCardStyle}>
+                                <PalletCard key={index} hexProps={item} />
+                                <div className={Style.buttonStyle}>
+                                    <Button text='Set active' actionType="setActive" />
+                                    <Button text='Delete' actionType="delete" />
+                                </div>
+                            </div>
+                            <div className={Style.SeperatorCantainer}>
+                                <div className={Style.Seperator}>
+                                    <Seperator />
+                                </div>
+                            </div>
+                        </>
                     )
                 })
             }
-            <PalletCard/>
+            <PalletCard />
         </>
     )
 }
