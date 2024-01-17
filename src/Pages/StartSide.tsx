@@ -1,45 +1,95 @@
-import { getFromLocalStorage } from "../Helpers"
-import { fetchColors } from "../Helpers";
-import { ColorCard } from "../components/ColorCard/ColorCard";
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
-import Style from "./StratSide.module.scss";
-import { Seperator } from "../components/Seperator/Seperator";
+import Style from "./StartSide.module.scss";
+import {saveToLocalStorage} from '../Helpers'
 
 export const StartSide = () => {
 
-    //Interface til arrayFromAPI, som sætter typen af data fra API'et
-    interface arrayFromAPIProps {
-        result: number[][];
-    }
+    const [colorArray, setColorArray] = useState<any>([])
+    const [hexArray, setHexArray] = useState([])
 
-    //Dummy data - data fra API'et skal gemmes i denne variabel
-    const arrayFromAPI: arrayFromAPIProps[] = [
-        { result: [[214, 78, 69], [247, 242, 163], [201, 216, 147], [57, 141, 112], [62, 80, 64]] }
-    ];
+    
+    const getNewColors = () => {
+    let url = "http://colormind.io/api/";
+    let options = {
+        method: "POST",
+        body: JSON.stringify({ model: "default" }),
+    };
+    fetch(url, options)
+        .then((res) => res.json())
+        .then((colors) => setColorArray(colors))
+        .catch((error) => console.error(error));
+    };
 
-    //Gemmer dataen fra arrayFromAPI i local storage
-    function saveToLocalStorage(tal: arrayFromAPIProps[]) {
-        // Gemmer variabelen i local storage
-        const hexPalletteArray = JSON.stringify(tal);
-        localStorage.setItem('hexPalletteArray', hexPalletteArray);
-        console.log('* hexPalletteArray gemmes i local storage: ', hexPalletteArray);
+    useEffect(()=>{
+        getNewColors()
+    },[])
+
+    useEffect(()=>{
+        let hex= colorArray.result?.map((item:any) => {
+            return(
+                rgbToHex(item[0], item[1], item[2])
+            )
+        })
+        setHexArray(hex)
+    },[colorArray])    
+
+    // console.log('COLORARRAY: ', colorArray);
+    // console.log('HEX COLORS:', hexArray);
+
+
+    function handleSave() {
+        saveToLocalStorage(hexArray)
+        notify() //kalder notify funktionen
     }
     
+  /**** RGB -> HEX  ****/
+    function rgbToHex(r: number, g: number, b: number): string {
+        const toHex = (color: number) => color.toString(16).padStart(2, '0')
+        return '#' + toHex(r) + toHex(g) + toHex(b)
+    }
 
-    // Kalder funktionen som gemmer data arrayFromAPI i local storage
-    saveToLocalStorage(arrayFromAPI);
-   
+
+    /**** change elements (gradients) ****/
+    const generateGradient = (colors: string[], direction: string = 'to right') => {
+        return `linear-gradient(${direction}, ${colors.join(', ')})`
+    }
+    useEffect(() => {
+        if (hexArray?.length > 0) {
+            const gradient = generateGradient(hexArray)
+            document.documentElement.style.setProperty('--newGradient', gradient)
+        }
+    }, [hexArray])
+
+    //Toast fra react-toastify
+    const notify = () => toast("The color palette has been saved !"); //sender toast med besked
+
 
 return(
         <>
             <header className={Style.Headline}>
-                <h1>Your new colors</h1>
+                <h1> <b>Your new colors</b></h1>
             </header>
-            <PalletCard />
-            <Button text='generate' actionType="generate"/>
-        <Button text='save this' actionType="save"/>
+            <PalletCard hexProps={hexArray} />
+            <div className={Style.startButtonContainer}>
+                <Button text='Generate' actionType="generate" action={getNewColors}/>
+                <Button text='Save This' actionType="save" action={handleSave} />
+            </div>
+            <ToastContainer 
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="dark"
+            />
         </>
-
         )
 }

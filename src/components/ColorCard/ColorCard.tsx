@@ -1,24 +1,26 @@
-import { useState } from "react";
 import Style from "./colorCard.module.scss";
 import { TiClipboard } from "react-icons/ti";
 
-export function ColorCard() {
-    const [colorHex] = useState<string>("#FF0000")
+interface colorCardInterface {
+    hexColor : string
+}
+
+export function ColorCard({hexColor}: colorCardInterface) {
+
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(colorHex);
+        navigator.clipboard.writeText(hexColor);
         alert(`Copied the color`);
     };
 
     return (
         <div>
-            <div className={Style.divCard} style={{ backgroundColor: colorHex }}>
+            <div className={Style.divCard} style={{ backgroundColor: hexColor }}>
             </div>
             <div className={Style.buttonCantainer}>
                 <p>
-                    {colorHex}
+                    {hexColor}
                 </p>
-                <button onClick={copyToClipboard}>
-                    copy 
+                <button className={Style.button} onClick={copyToClipboard}>
                 <TiClipboard />
                 </button>
             </div>

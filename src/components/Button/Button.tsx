@@ -1,7 +1,8 @@
 import styles from "./button.module.scss";
-import { getFromLocalStorage } from '../../Helpers'
+
 interface ButtonProps {
   text: string;
+  action?: ()=> void;
   actionType:
     | "generate"
     | "save"
@@ -12,17 +13,17 @@ interface ButtonProps {
 }    
 
 
-function Button({ text, actionType }: ButtonProps) {
+function Button({ text, actionType, action }: ButtonProps) {
   const handleClick = () => {
     switch (actionType) {
       case "generate":
         console.log("generate clicked");
+        action && action()
         break;
 
       case "save":
         console.log("save this clicked");
-          // Kalder funktionen som henter data fra local storage
-          getFromLocalStorage()
+        action && action()
         break;
 
       case "randomPalette":
@@ -39,6 +40,7 @@ function Button({ text, actionType }: ButtonProps) {
 
       case "delete":
         console.log("delete clicked");
+        action && action()
         break;
         
       default:
@@ -47,7 +49,7 @@ function Button({ text, actionType }: ButtonProps) {
   };
 
   return (
-    <button className={styles.button} onClick={handleClick}>
+    <button className={styles.button} onClick={handleClick} >
       {text}
     </button>
   );

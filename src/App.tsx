@@ -5,7 +5,7 @@ import { StartSide } from "./Pages/StartSide";
 import './App.css'
 
 function App() {
-  
+
 
   return (
     <BrowserRouter>
