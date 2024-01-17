@@ -71,12 +71,9 @@ function handelDelete(index:number) {
                                 </div>
                             </div>
                             <div className={Style.SeperatorCantainer}>
-                                <div className={Style.Seperator}>
                                     <Seperator />
-                                </div>
                             </div>
                         </>
-
                     )
                 })
             }
