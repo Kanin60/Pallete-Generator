@@ -5,19 +5,22 @@ import Style from "./MyPallettePage.module.scss";
 import { Seperator } from "../components/Seperator/Seperator";
 
 
-/* 
-Findes der data i LS(if)
-Hvis der findes noget i LS så:
-Hent arrays fra Local Storage
-Gem data i ny state
-Map data fra state
-Ellers
-Vis intet på siden
-*/
+
 export const MyPallettePage = () => {
 
     const [arrayPallette, setArrayPallette] = useState([])
 
+    /* 
+    function handleArrayPallette:
+    Trin for trin:
+    Findes der data i LS(if)
+    Hvis der findes noget i LS så:
+    Hent arrays fra Local Storage
+    Gem data i ny state
+    Map data fra state
+    Ellers
+    Vis intet på siden
+    */
     function handleArrayPallette() {
         if (localStorage.getItem('hexPalletteArray')) {
             let data = JSON.parse(localStorage.getItem('hexPalletteArray')!)
