@@ -23,27 +23,48 @@ export const MyPallettePage = () => {
             setArrayPallette(data)
         }else{
             setArrayPallette([])
-    }
+        }
     } 
 
     useEffect(()=>{
         handleArrayPallette()
     },[])
     
-    console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
+    // console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
+
+    /* 
+    Funktionen vil modtage index(nummer) fra den button, som hører til den palletCard man vil slette, 
+    hente local storage, slette palletCard'et og updatere staten og local storage.
+    **STEP BY STEP**
+    - index sendes med button via en arraow function i action?
+    - function modtager index
+    delete-function():
+    - array fra local storage hentes og gemmes i variable
+    - array metoden .splice(index, antal) bruges på variable
+    - variablen gemmes i staten(setArrayPallette)
+    - variablen gemmes i local storage
+    */
+
+function handelDelete(index:number) {
+    let savedArrays = JSON.parse(localStorage.getItem('hexPalletteArray')!)
+    savedArrays.splice(index, 1)
+    setArrayPallette(savedArrays)
+    localStorage.setItem('hexPalletteArray', JSON.stringify(savedArrays))
+}
+
 
     return(
         <>
             {
                 arrayPallette && arrayPallette.map((item : string[], index : number)=>{
                     return(
-                    <>
-                        <PalletCard key={index} hexProps={item}/>
+                    <div key={index}>
+                        <PalletCard hexProps={item}/>
                         <div className={Style.buttonStyle}>
                             <Button text='Set active' actionType="setActive"/>
-                            <Button text='Delete' actionType="delete"/>
+                            <Button text='Delete' actionType="delete" action={()=>handelDelete(index)} />
                         </div>
-                    </>
+                    </div>
                     )
                 })
             }
