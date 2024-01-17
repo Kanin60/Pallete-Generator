@@ -9,14 +9,14 @@ export const Navigation = () => {
     <nav>
         <div>
             <h1 className={style.headline}>Colorizer Pallette Generator</h1>
-      <ul>
-        <NavLink to="/">
-          <Button text="Random Palette" actionType="randomPalette"></Button>
-        </NavLink>
-        <NavLink to="/mypallettes">
-          <Button text="My Palette" actionType="myPalettes" />
-        </NavLink>
-      </ul>
+            <ul>
+              <NavLink to="/">
+                <Button text="Random Palette" actionType="randomPalette"></Button>
+              </NavLink>
+              <NavLink to="/mypallettes">
+                <Button text="My Palette" actionType="myPalettes" />
+              </NavLink>
+            </ul>
         </div>
       
       <Seperator/>
