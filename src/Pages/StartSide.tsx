@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StartSide.module.scss";
@@ -41,6 +43,7 @@ export const StartSide = () => {
 
     function handleSave() {
         saveToLocalStorage(hexArray)
+        notify() //kalder notify funktionen
     }
     
   /**** RGB -> HEX  ****/
@@ -61,6 +64,9 @@ export const StartSide = () => {
         }
     }, [hexArray])
 
+    //Toast fra react-toastify
+    const notify = () => toast("The color palette has been saved !"); //sender toast med besked
+
 
 return(
         <>
@@ -72,7 +78,18 @@ return(
                 <Button text='Generate' actionType="generate" action={getNewColors}/>
                 <Button text='Save This' actionType="save" action={handleSave} />
             </div>
+            <ToastContainer 
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                theme="dark"
+            />
         </>
-
         )
 }
