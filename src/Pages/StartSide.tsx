@@ -35,8 +35,8 @@ export const StartSide = () => {
         setHexArray(hex)
     },[colorArray])    
 
-    console.log('COLORARRAY: ', colorArray);
-    console.log('HEX COLORS:', hexArray);
+    // console.log('COLORARRAY: ', colorArray);
+    // console.log('HEX COLORS:', hexArray);
 
 
     function handleSave() {
