@@ -40,6 +40,7 @@ function Button({ text, actionType, action }: ButtonProps) {
 
       case "delete":
         console.log("delete clicked");
+        action && action()
         break;
         
       default:
