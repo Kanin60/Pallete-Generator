@@ -8,16 +8,17 @@ import { Seperator } from "../components/Seperator/Seperator";
 
 export const MyPallettePage = () => {
 
+    // state som gemmer hexPalletteArray fra local storage
     const [arrayPallette, setArrayPallette] = useState([])
 
     /* 
-    function handleArrayPallette:
+    function handleArrayPallette, som hexPalletteArray fra local storage, eller sætter staten til en tomt array
     Trin for trin:
     Findes der data i LS(if)
     Hvis der findes noget i LS så:
     Hent arrays fra Local Storage
     Gem data i ny state
-    Map data fra state
+    Map data fra state nede i return
     Ellers
     Vis intet på siden
     */
@@ -31,14 +32,11 @@ export const MyPallettePage = () => {
 
     } 
 
-
+    //kalder funktionen handleArrayPallette en gang
     useEffect(() => {
         handleArrayPallette()
-
     },[])
     
-    // console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
-
     /* 
     Funktionen vil modtage index(nummer) fra den button, som hører til den palletCard man vil slette, 
     hente local storage, slette palletCard'et og updatere staten og local storage.
@@ -51,7 +49,6 @@ export const MyPallettePage = () => {
     - variablen gemmes i staten(setArrayPallette)
     - variablen gemmes i local storage
     */
-
 function handelDelete(index:number) {
     let savedArrays = JSON.parse(localStorage.getItem('hexPalletteArray')!)
     savedArrays.splice(index, 1)
@@ -59,6 +56,7 @@ function handelDelete(index:number) {
     localStorage.setItem('hexPalletteArray', JSON.stringify(savedArrays))
 }
 
+    //staten mappes og laver et array af gemte palletter fra local storage
     return (
         <>
             {

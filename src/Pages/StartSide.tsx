@@ -7,27 +7,30 @@ import Style from "./StartSide.module.scss";
 import {saveToLocalStorage} from '../Helpers'
 
 export const StartSide = () => {
-
+    //state som gemmer på farvearrayet fra fetch
     const [colorArray, setColorArray] = useState<any>([])
+    //state som gemmer på farvearrayet efter det er lavet om fra RGB til HEX
     const [hexArray, setHexArray] = useState([])
 
-    
+    //Fetcher farve arrayet fra apiet
     const getNewColors = () => {
-    let url = "http://colormind.io/api/";
-    let options = {
-        method: "POST",
-        body: JSON.stringify({ model: "default" }),
-    };
-    fetch(url, options)
-        .then((res) => res.json())
-        .then((colors) => setColorArray(colors))
-        .catch((error) => console.error(error));
+        let url = "http://colormind.io/api/";
+        let options = {
+            method: "POST",
+            body: JSON.stringify({ model: "default" }),
+        };
+        fetch(url, options)
+            .then((res) => res.json())
+            .then((colors) => setColorArray(colors))
+            .catch((error) => console.error(error));
     };
 
+    // kalder funktionen getNewColors, som fetcher farvearrayet
     useEffect(()=>{
         getNewColors()
     },[])
 
+    //kalder funktionen rgbToHex, som ændre farverne fra RGB til HEX, retunere dem og gemmer dem i staten hexArray, hver gang staten colorArray ændres
     useEffect(()=>{
         let hex= colorArray.result?.map((item:any) => {
             return(
@@ -37,10 +40,7 @@ export const StartSide = () => {
         setHexArray(hex)
     },[colorArray])    
 
-    // console.log('COLORARRAY: ', colorArray);
-    // console.log('HEX COLORS:', hexArray);
-
-
+    //kalder funktionen saveToLocalStorage, som sender hexArray med som props, og kalder funktionen notify
     function handleSave() {
         saveToLocalStorage(hexArray)
         notify() //kalder notify funktionen
