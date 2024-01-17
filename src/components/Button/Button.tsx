@@ -2,7 +2,7 @@ import styles from "./button.module.scss";
 
 interface ButtonProps {
   text: string;
-  action?: ()=> void;
+  action?: ()=> void; //sætter action type til at være en funktion, hvis der er en - med ?
   actionType:
     | "generate"
     | "save"
@@ -18,7 +18,7 @@ function Button({ text, actionType, action }: ButtonProps) {
     switch (actionType) {
       case "generate":
         console.log("generate clicked");
-        action && action()
+        action && action() //undersøger om der er en action og hvis der er bliver den kaldt
         break;
 
       case "save":

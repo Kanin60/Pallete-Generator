@@ -16,7 +16,6 @@ export const MainLayout = () => {
         document.documentElement.style.setProperty('--myPaletteGradient', myPaletteGradient)
     }, [randomPaletteTheme, myPaletteTheme])
     
-
     return(
         < >
             <Navigation />
