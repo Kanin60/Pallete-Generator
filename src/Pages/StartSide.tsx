@@ -5,6 +5,7 @@ import Button from "../components/Button/Button";
 import { PalletCard } from "../components/PalletCard/PalletCard";
 import Style from "./StartSide.module.scss";
 import {saveToLocalStorage} from '../Helpers'
+import { useTheme } from "../Layout/ThemeContext";
 
 export const StartSide = () => {
     //state som gemmer på farvearrayet fra fetch
@@ -54,15 +55,23 @@ export const StartSide = () => {
 
 
     /**** change elements (gradients) ****/
-    const generateGradient = (colors: string[], direction: string = 'to right') => {
-        return `linear-gradient(${direction}, ${colors.join(', ')})`
-    }
+    // const generateGradient = (colors: string[], direction: string = 'to right') => {
+    //     return `linear-gradient(${direction}, ${colors.join(', ')})`
+    // }
+    // useEffect(() => {
+    //     if (hexArray?.length > 0) {
+    //         const gradient = generateGradient(hexArray)
+    //         document.documentElement.style.setProperty('--newGradient', gradient)
+    //     }
+    // }, [hexArray])
+
+    const {setRandomPaletteTheme} = useTheme()
+
     useEffect(() => {
         if (hexArray?.length > 0) {
-            const gradient = generateGradient(hexArray)
-            document.documentElement.style.setProperty('--newGradient', gradient)
+            setRandomPaletteTheme(hexArray)
         }
-    }, [hexArray])
+    },[hexArray])
 
     //Toast fra react-toastify
     const notify = () => toast("The color palette has been saved !"); //sender toast med besked

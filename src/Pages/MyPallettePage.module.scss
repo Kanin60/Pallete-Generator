@@ -18,9 +18,26 @@
     display: flex;
     justify-content: end;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 5rem;   
-}
+    gap: 10px; 
+  margin-top: 5rem;  
+
+
+}    
+
+ button {
+    border-image: var(--myPaletteGradient) 1 stretch;
+  }
+  
+  .myPallettePage .headline {
+    background-image: var(--myPaletteGradient);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .myPallettePage button {
+    border-image: var(--myPaletteGradient) 1 stretch;
+}}
+
 
 .SeperatorCantainer{
     max-width: 60%;
@@ -42,3 +59,4 @@
         max-width: 90%
     }
 }
+

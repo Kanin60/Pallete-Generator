@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import Button from "../components/Button/Button"
 import { PalletCard } from "../components/PalletCard/PalletCard"
 import Style from "./MyPallettePage.module.scss";
+import { useTheme } from '../Layout/ThemeContext';
 import { Seperator } from "../components/Seperator/Seperator";
-
-
 
 export const MyPallettePage = () => {
 
@@ -37,6 +36,24 @@ export const MyPallettePage = () => {
         handleArrayPallette()
     },[])
     
+
+    // console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
+
+
+           /**** set active ****/
+    const {setMyPaletteTheme} = useTheme()
+
+    const setActive = (palette: string[]) => {
+        setMyPaletteTheme(palette)
+        localStorage.setItem('activePalette', JSON.stringify(palette))
+    }
+    useEffect(() => {
+        const savedPalette = JSON.parse(localStorage.getItem('activePalette') || 'null')
+        if (savedPalette) {
+            setMyPaletteTheme(savedPalette)
+        }
+    }, [setMyPaletteTheme])
+          
     /* 
     Funktionen vil modtage index(nummer) fra den button, som hører til den palletCard man vil slette, 
     hente local storage, slette palletCard'et og updatere staten og local storage.
@@ -58,7 +75,7 @@ function handelDelete(index:number) {
 
     //staten mappes og laver et array af gemte palletter fra local storage
     return (
-        <>
+        <><div className={Style.myPallettePage}>
             {
                 arrayPallette && arrayPallette.map((item: string[], index: number) => {
                     return (
@@ -66,7 +83,7 @@ function handelDelete(index:number) {
                             <div className={Style.PalletCardStyle}>
                                 <PalletCard key={index} hexProps={item} />
                                 <div className={Style.buttonStyle}>
-                                    <Button text='Set active' actionType="setActive" />
+                                    <Button text='Set active' actionType="setActive" action={() => setActive(item)}/>
                                     <Button text='Delete' actionType="delete"action={()=>handelDelete(index)} />
                                 </div>
                             </div>
@@ -78,6 +95,8 @@ function handelDelete(index:number) {
                 })
             }
             <PalletCard />
+          </div>
+
         </>
     )
 }

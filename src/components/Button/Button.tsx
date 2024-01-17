@@ -35,6 +35,7 @@ function Button({ text, actionType, action }: ButtonProps) {
         break;
 
       case "setActive":
+        action && action()
         console.log("set active clicked");
         break;
 
