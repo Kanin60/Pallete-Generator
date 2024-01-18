@@ -29,19 +29,19 @@ export const MyPallettePage = () => {
             setArrayPallette([])
         }
 
-    } 
+    }
 
     //kalder funktionen handleArrayPallette en gang
     useEffect(() => {
         handleArrayPallette()
-    },[])
-    
+    }, [])
+
 
     // console.log('HER ER DATA FRA MYPALLETPAGE', arrayPallette);
 
 
-           /**** set active ****/
-    const {setMyPaletteTheme} = useTheme()
+    /**** set active ****/
+    const { setMyPaletteTheme } = useTheme()
 
     const setActive = (palette: string[]) => {
         setMyPaletteTheme(palette)
@@ -53,7 +53,7 @@ export const MyPallettePage = () => {
             setMyPaletteTheme(savedPalette)
         }
     }, [setMyPaletteTheme])
-          
+
     /* 
     Funktionen vil modtage index(nummer) fra den button, som hører til den palletCard man vil slette, 
     hente local storage, slette palletCard'et og updatere staten og local storage.
@@ -66,12 +66,12 @@ export const MyPallettePage = () => {
     - variablen gemmes i staten(setArrayPallette)
     - variablen gemmes i local storage
     */
-function handelDelete(index:number) {
-    let savedArrays = JSON.parse(localStorage.getItem('hexPalletteArray')!)
-    savedArrays.splice(index, 1)
-    setArrayPallette(savedArrays)
-    localStorage.setItem('hexPalletteArray', JSON.stringify(savedArrays))
-}
+    function handelDelete(index: number) {
+        let savedArrays = JSON.parse(localStorage.getItem('hexPalletteArray')!)
+        savedArrays.splice(index, 1)
+        setArrayPallette(savedArrays)
+        localStorage.setItem('hexPalletteArray', JSON.stringify(savedArrays))
+    }
 
     //staten mappes og laver et array af gemte palletter fra local storage
     return (
@@ -83,20 +83,19 @@ function handelDelete(index:number) {
                             <div className={Style.PalletCardStyle}>
                                 <PalletCard key={index} hexProps={item} />
                                 <div className={Style.buttonStyle}>
-                                    <Button text='Set active' actionType="setActive" action={() => setActive(item)}/>
-                                    <Button text='Delete' actionType="delete"action={()=>handelDelete(index)} />
+                                    <Button text='Set active' actionType="setActive" action={() => setActive(item)} />
+                                    <Button text='Delete' actionType="delete" action={() => handelDelete(index)} />
                                 </div>
                             </div>
                             <div className={Style.SeperatorCantainer}>
-                                    <Seperator />
+                                <Seperator />
                             </div>
                         </>
                     )
                 })
             }
             <PalletCard />
-          </div>
-
+        </div>
         </>
     )
 }

@@ -11,12 +11,12 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
-    <Routes>
-      <Route path='/' element={<MainLayout/>}>
-        <Route index element={<StartSide />} />
-        <Route path='/mypallettes' element={<MyPallettePage/>}/>
-      </Route>
-    </Routes>
+        <Routes>
+          <Route path='/' element={<MainLayout/>}>
+            <Route index element={<StartSide />} />
+            <Route path='/mypallettes' element={<MyPallettePage/>}/>
+          </Route>
+        </Routes>
       </ThemeProvider>
   </BrowserRouter>
   )

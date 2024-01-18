@@ -8,10 +8,10 @@ interface ThemeContextI {
 }
 
 const ThemeContext = createContext<ThemeContextI>({
-   myPaletteTheme: [],
-   randomPaletteTheme: [],
-   setMyPaletteTheme: ()=> {},
-   setRandomPaletteTheme: () => {}
+    myPaletteTheme: [],
+    randomPaletteTheme: [],
+    setMyPaletteTheme: ()=> {},
+    setRandomPaletteTheme: () => {}
 })
 export const useTheme = () => useContext(ThemeContext)
 

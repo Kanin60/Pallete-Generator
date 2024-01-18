@@ -7,11 +7,6 @@ export function getFromLocalStorage() {
     console.log('* savedPalletteArray henter data fra local storage: ', savedPalletteArray[0]);
 }
 
-//Funktion til gradient-styling på elementer
-export function gradient(colorCode:number) {
-  colorCode//IKKE FÆRDIG
-}
-
 
 
 //Gemmer dataen fra arrayFromAPI i local storage
